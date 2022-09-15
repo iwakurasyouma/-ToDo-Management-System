@@ -2,6 +2,7 @@ package com.dmm.task.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
@@ -12,5 +13,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// すべてのリクエストを認証なしで通過させる
 		http.authorizeRequests().anyRequest().permitAll();
 	}
+	 @Override
+		public void configure(WebSecurity web) throws Exception {
+			// 画像、JavaScript、cssは認可の対象外とする
+			web.debug(false).ignoring().antMatchers("/images/**", "/js/**", "/css/**");
+		}
 
 }
