@@ -41,7 +41,9 @@ public class TestController {
 		int length = now.lengthOfMonth();
 		LocalDate dayweek2 = beforemonth.plusDays(7);
 		LocalDate lastday = now.withDayOfMonth(length);
-		for (int n = 7; n < length; n++) {
+		DayOfWeek lastdate = lastday.getDayOfWeek();
+		int lestdate = lastdate.getValue();
+		for (int n = 7; n < length+(6-lestdate); n++) {
 			week.add(dayweek2);
 			DayOfWeek week2 = dayweek2.getDayOfWeek();
 			dayweek2 = dayweek2.plusDays(1);
