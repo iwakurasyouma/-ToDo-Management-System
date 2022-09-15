@@ -57,6 +57,7 @@ public class TestController {
 		model.addAttribute("week",week);
 		return "main";
 	}
+	
 
 	@RequestMapping("/testlogin")
 	public String login() {
