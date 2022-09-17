@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TaskCoontroller {
 
-	@RequestMapping("/testcreate")
+	@RequestMapping("/create")
 	public String index() {
 		return "create";
 	}
 
-	@RequestMapping("/testedit")
+	@RequestMapping("/edit")
 	public String test() {
 		return "edit";
 	}
 
-	@RequestMapping("/testmain")
+	@RequestMapping("/main")
 	public String main(Model model) {
 		List<LocalDate> week = new ArrayList<>();
 		List<List<LocalDate>> month = new ArrayList<>();
@@ -59,7 +59,7 @@ public class TaskCoontroller {
 	}
 	
 
-	@RequestMapping("/testlogin")
+	@RequestMapping("/loginForm")
 	public String login() {
 		return "login";
 	}
