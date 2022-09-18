@@ -7,7 +7,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.dmm.task.data.entity.Tasks;
 
 @Controller
 public class TaskCoontroller {
@@ -39,7 +43,8 @@ public class TaskCoontroller {
 		}
 
 		int length = now.lengthOfMonth();
-		LocalDate dayweek2 = beforemonth.plusDays(7);
+		LocalDate beforemonth2 =  firstday.minusDays(week1.getValue());
+		LocalDate dayweek2 = beforemonth2.plusDays(7);
 		LocalDate lastday = now.withDayOfMonth(length);
 		DayOfWeek lastdate = lastday.getDayOfWeek();
 		int lestdate = lastdate.getValue();
@@ -51,10 +56,11 @@ public class TaskCoontroller {
 				month.add(week);
 			}
 		}
+		MultiValueMap<LocalDate, Tasks> tasks = new LinkedMultiValueMap<LocalDate, Tasks>();
+		model.addAttribute("tasks", tasks); 
 		
 		
 		model.addAttribute("matrix",month);
-		model.addAttribute("week",week);
 		return "main";
 	}
 	
